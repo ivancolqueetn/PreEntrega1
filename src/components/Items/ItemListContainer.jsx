@@ -2,22 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { Row } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import ItemList from './ItemList';
+import useFetch from '../Hooks/useFetch';
 
 const ItemListContainer = ({greeting}) => {
-	const [items, setItems] = useState([])
+	const [items] = useFetch("https://fakestoreapi.com/products")
 
-	useEffect( () => {
-		fetch("https://fakestoreapi.com/products")
-		.then(response=>response.json())
-		.then(data => setItems(data))
-		.catch(error => connsole.log(error))
-	},[])
-	console.log(items)
 	return (
 		<Container>
-			<Row className>
+			<Row >
 				<h1>{greeting}</h1>
-                <ItemList items={items}/>
+				{
+				items !== null &&
+				<ItemList items={items}/>
+				}
 			</Row>
 		</Container> 
 

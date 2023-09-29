@@ -1,16 +1,30 @@
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import ItemDetailContainer from './components/Details/ItemDetailContainer'
-import ItemListContainer from './components/Items/ItemListContainer'
 import NavBar from './components/NavBar/Navbar'
+import About from './pages/About'
+import Contact from './pages/Contact'
+import Home from './pages/Home'
+import Buy from './pages/Buy'
+import Detail from './pages/Detail'
+
 
 
 function App() {
  
   return (
     <div className='container'>
+
         <NavBar/>
-        <ItemListContainer greeting={"Bienvenidos a la ferreteria online"}/>
-        <ItemDetailContainer/>
+
+        <Routes>
+            <Route path='/' element={<Home/>}/>
+            <Route path='/Category/:CategoryId' element={<Home/>}/>
+            <Route path='/Buy' element={<Buy/>}/>
+            <Route path='/About' element={<About/>}/>
+            <Route path='/Contact' element={<Contact/>}/>
+            <Route path='/Detail/:id' element={<Detail/>}/>
+        </Routes>
+      
     </div>
     
 
