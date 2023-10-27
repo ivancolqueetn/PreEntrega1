@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
+import { addToCart } from '../utils/addToCart';
 
 
 
@@ -25,14 +26,7 @@ const ItemList = ({items}) => {
 // COMPONENTE CardList
 const CardList = ({item}) => {
   function handleclick(item){
-    if(!localStorage.getItem('cartItems')){
-      localStorage.setItem('cartItems',JSON.stringify([]))
-      }
-      const newcart=localStorage.getItem('cartItems')
-      const newcartParse = JSON.parse(newcart)
-      newcartParse.push(item)
-      localStorage.setItem('cartItems',JSON.stringify(newcartParse))
-      
+   addToCart(item)
   }
 
   return (
@@ -47,7 +41,7 @@ const CardList = ({item}) => {
                     <Button variant="primary">Ver Detalles</Button>
                 </Link>
 
-                    <Button onClick={() => handleclick(item)} variant="primary">Añadir Carrito</Button>
+                    {/* <Button onClick={() => handleclick(item)} variant="primary">Añadir Carrito</Button> */}
 
         </Card.Body>
     </Card>
